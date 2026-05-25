@@ -1,0 +1,536 @@
+:root {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  color: #202633;
+  background: #f5f7fb;
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --text: #202633;
+  --muted: #687385;
+  --line: #dfe5ef;
+  --primary: #2468f2;
+  --soft: #eef4ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme='dark'] {
+  color: #e6eaf2;
+  background: #151920;
+  --bg: #151920;
+  --panel: #202633;
+  --text: #e6eaf2;
+  --muted: #9aa5b5;
+  --line: #333d4c;
+  --primary: #6aa1ff;
+  --soft: #202b3d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 1180px;
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--bg);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px 22px 18px;
+}
+
+.brand strong {
+  font-size: 20px;
+}
+
+.brand span,
+.muted {
+  color: var(--muted);
+}
+
+.app-sidebar .el-menu {
+  border-right: 0;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.app-header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.app-header span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.header-actions,
+.hero-actions,
+.next-actions,
+.chat-input-actions,
+.message-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.app-main {
+  padding: 0;
+}
+
+.page {
+  width: min(1180px, calc(100vw - 276px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.page-heading,
+.hero-band,
+.content-section,
+.panel,
+.loading-state,
+.error-state,
+.empty-state {
+  margin-bottom: 22px;
+}
+
+.page-heading h1,
+.hero-band h1,
+.section-title h2,
+.panel h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.page-heading h1,
+.hero-band h1 {
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.page-heading p,
+.hero-band p,
+.feature-card p,
+.state-description {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero-band {
+  display: flex;
+  align-items: center;
+  min-height: 320px;
+  padding: 44px 48px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(110deg, rgba(36, 104, 242, 0.12), transparent 55%),
+    var(--panel);
+}
+
+.hero-band p {
+  max-width: 760px;
+  font-size: 17px;
+}
+
+.content-section {
+  padding: 26px 0;
+}
+
+.section-title {
+  margin-bottom: 18px;
+}
+
+.feature-grid,
+.summary-grid,
+.settings-grid,
+.question-grid,
+.two-column {
+  display: grid;
+  gap: 18px;
+}
+
+.feature-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.feature-card,
+.question-card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.feature-card .el-icon {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  color: var(--primary);
+  background: var(--soft);
+  font-size: 20px;
+}
+
+.feature-card h3,
+.question-card h3 {
+  margin: 0 0 8px;
+}
+
+.stack-list,
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.two-column {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.panel {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.upload-dropzone {
+  display: flex;
+  min-height: 280px;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 34px;
+  border: 2px dashed #b8c4d6;
+  border-radius: 8px;
+  background: var(--soft);
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-dropzone.active {
+  border-color: var(--primary);
+  background: rgba(36, 104, 242, 0.08);
+}
+
+.upload-icon {
+  color: var(--primary);
+  font-size: 54px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.file-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 18px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.file-meta p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.preview-box,
+.detail-json {
+  max-height: 420px;
+  margin: 18px 0 0;
+  overflow: auto;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.action-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loading-state,
+.error-state,
+.empty-state {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  text-align: center;
+}
+
+.loading-state p,
+.error-state p {
+  color: var(--muted);
+}
+
+.state-icon {
+  color: var(--primary);
+  font-size: 48px;
+}
+
+.state-icon.error {
+  color: #e5484d;
+}
+
+.summary-section {
+  margin-bottom: 18px;
+}
+
+.summary-section h3,
+.question-block strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.summary-section p,
+.summary-section li,
+.question-block p,
+.question-block li {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.summary-grid,
+.settings-grid,
+.question-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.chat-box {
+  display: flex;
+  min-height: 680px;
+  flex-direction: column;
+}
+
+.chat-messages {
+  height: 470px;
+  overflow: auto;
+  padding: 4px 2px 14px;
+}
+
+.chat-message {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.message-avatar {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #ffffff;
+  background: var(--primary);
+  font-weight: 700;
+}
+
+.chat-message.user .message-avatar {
+  background: #2f9e77;
+}
+
+.message-body {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.message-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.plain-message {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.markdown-body {
+  line-height: 1.75;
+}
+
+.markdown-body h3 {
+  margin: 4px 0 10px;
+}
+
+.markdown-body p {
+  margin: 8px 0;
+}
+
+.markdown-body blockquote {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-left: 4px solid var(--primary);
+  background: var(--panel);
+}
+
+.message-error {
+  margin-top: 12px;
+}
+
+.message-actions {
+  margin-top: 12px;
+}
+
+.chat-input {
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.chat-input-actions {
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.form-panel .el-form {
+  max-width: 760px;
+}
+
+.question-list {
+  display: grid;
+  gap: 16px;
+}
+
+.question-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.question-block {
+  margin-top: 16px;
+}
+
+.login-page {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1.15fr 0.85fr;
+  background: var(--bg);
+}
+
+.login-visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  background:
+    linear-gradient(120deg, rgba(36, 104, 242, 0.12), rgba(47, 158, 119, 0.1)),
+    var(--panel);
+}
+
+.login-visual h1 {
+  max-width: 720px;
+  margin: 0;
+  font-size: 46px;
+  line-height: 1.18;
+}
+
+.login-visual p {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.login-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px;
+  background: var(--panel);
+}
+
+.login-panel h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.login-panel .el-button {
+  width: 100%;
+}
+
+:root[data-theme='dark'] .el-menu,
+:root[data-theme='dark'] .el-header,
+:root[data-theme='dark'] .el-aside,
+:root[data-theme='dark'] .el-table,
+:root[data-theme='dark'] .el-table tr,
+:root[data-theme='dark'] .el-table th.el-table__cell {
+  --el-bg-color: var(--panel);
+  --el-fill-color-blank: var(--panel);
+  --el-text-color-primary: var(--text);
+  --el-text-color-regular: var(--muted);
+  --el-border-color-lighter: var(--line);
+}
